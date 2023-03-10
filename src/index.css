@@ -1,0 +1,9 @@
+html, body {
+  min-height: 550px;
+}
+
+body {
+  width: 500px;
+  height: 470px;
+  margin: 0;
+}
