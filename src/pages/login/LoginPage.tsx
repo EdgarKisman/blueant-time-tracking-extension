@@ -1,20 +1,18 @@
 import React, {useState} from "react"
-import {Box, Button, Form, FormField, Heading, Text, TextInput,} from "grommet"
-import {Hide, View} from "grommet-icons"
-import {login, LoginCredentials} from "../../api/base/login"
+import {Box, Button, Form, FormField, Heading, Text, TextInput, Notification} from "grommet"
+import {login} from "../../api/base/requests/login"
+import {Credentials, RequestError, UserSession} from "../../api/base/typings";
 
 const LoginPage = () => {
-    const [username, setUsername] = useState("")
-    const [password, setPassword] = useState("")
-    const [response, setResponse] = useState(undefined)
-    const [revealPassword, setRevealPassword] = useState(false)
+    const [username, setUsername] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [response, setResponse] = useState<UserSession | undefined>(undefined)
+    const [error, setError] = useState<RequestError | undefined>(undefined)
 
-    const handleSubmit = ({value}: { value: LoginCredentials }) => {
+    const handleSubmit = ({value}: { value: Credentials }) => {
         login({username: value.username, password: value.password})
             .then((response) => setResponse(response))
-            .catch(() => setResponse(response))
-        console.log(`Email: ${value.username}, Password: ${value.password}`)
-        // Add your login logic here
+            .catch((error: RequestError) => setError(error))
     }
 
     return (
@@ -32,7 +30,7 @@ const LoginPage = () => {
                 </FormField>
                 <FormField label="Password" name="password">
                     <TextInput
-                        type={revealPassword ? "text" : "password"}
+                        type="password"
                         name="password"
                         value={password}
                         onChange={(event) => setPassword(event.target.value)}
@@ -43,7 +41,19 @@ const LoginPage = () => {
                     <Button type="submit" label="Login" primary fill="horizontal"/>
                 </Box>
             </Form>
-            <Text>{response}</Text>
+            <Text>Person ID</Text>
+            <Text>{response?.personID}</Text>
+            <Text>Session ID</Text>
+            <Text>{response?.sessionID}</Text>
+            {error &&
+                <Notification
+                    toast
+                    status="critical"
+                    title={error.errorCode.toString()}
+                    message={error.errorMessage}
+                    onClose={() => setError(undefined)}
+                />
+            }
         </Box>
     )
 }
