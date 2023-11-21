@@ -1,12 +1,12 @@
 import React, {useState} from "react"
 import {Box, Button, Form, FormField, Heading, Text, TextInput, Notification} from "grommet"
 import {login} from "../../api/base/requests/login"
-import {Credentials, RequestError, UserSession} from "../../api/base/typings";
+import {Credentials, RequestError, BlueAntSession} from "../../api/base/typings";
 
 const LoginPage = () => {
     const [username, setUsername] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const [response, setResponse] = useState<UserSession | undefined>(undefined)
+    const [response, setResponse] = useState<BlueAntSession | undefined>(undefined)
     const [error, setError] = useState<RequestError | undefined>(undefined)
 
     const handleSubmit = ({value}: { value: Credentials }) => {
@@ -49,8 +49,8 @@ const LoginPage = () => {
                 <Notification
                     toast
                     status="critical"
-                    title={error.errorCode.toString()}
-                    message={error.errorMessage}
+                    title={error.statusCode.toString()}
+                    message={error.message}
                     onClose={() => setError(undefined)}
                 />
             }

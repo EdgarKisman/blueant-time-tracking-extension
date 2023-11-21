@@ -3,12 +3,12 @@ export type Credentials = {
     readonly password: string
 }
 
-export type UserSession = {
+export type BlueAntSession = {
     sessionID: string
     personID: string
 }
 
 export interface RequestError {
-    errorCode: number
-    errorMessage: string
+    statusCode: number
+    message: string
 }

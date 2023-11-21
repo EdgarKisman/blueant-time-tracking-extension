@@ -1,19 +1,9 @@
-import React, {PropsWithChildren, useContext, useState} from 'react';
-import {
-    Grommet,
-    grommet,
-    Header,
-    Text,
-    Page,
-    PageContent,
-    PageHeader,
-    Button,
-    Box,
-    ResponsiveContext,
-} from 'grommet';
+import React, {PropsWithChildren, useState} from 'react';
+import {Box, Button, Grommet, grommet, Header, Page, PageContent, Text,} from 'grommet';
 import {Moon, Sun} from "grommet-icons";
 import {deepMerge} from "grommet/utils"
 import LoginPage from "./pages/login/LoginPage";
+import TimeOverviewPage from "./pages/overview/TimeOverviewPage";
 
 const theme = deepMerge(grommet, {
     global: {
@@ -39,7 +29,7 @@ const AppBar = (props: PropsWithChildren) => (
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(false)
-    const size = useContext(ResponsiveContext);
+    const isAuthenticated = false
     return (
         <Grommet theme={theme} full themeMode={darkMode ? "dark" : "light"}>
             <Page>
@@ -49,16 +39,18 @@ const App = () => {
                         icon={darkMode ? <Moon/> : <Sun/>}
                         onClick={() => setDarkMode(!darkMode)}
                         tip={{
-                         content: (
-                             <Box pad="small" round="small" background={darkMode ? "dark-1" : "light-3"}>
-                                 {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                             </Box>
-                         )
+                            content: (
+                                <Box pad="small" round="small" background={darkMode ? "dark-1" : "light-3"}>
+                                    {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                                </Box>
+                            )
                         }}
                     />
                 </AppBar>
                 <PageContent>
-                    <LoginPage/>
+                    {
+                        isAuthenticated ? <TimeOverviewPage/> : <LoginPage/>
+                    }
                 </PageContent>
             </Page>
         </Grommet>
