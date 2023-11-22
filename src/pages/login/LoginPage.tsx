@@ -34,49 +34,47 @@ const LoginPage = () => {
       .catch((error: RequestError) => setError(error));
   };
 
-  return (
-    <AuthContext.Provider value={authentication}>
-      <Box align="center" pad="large">
-        <Heading level={2}>Login</Heading>
-        <Form onSubmit={handleSubmit}>
-          <FormField label="Username" name="username">
-            <TextInput
-              type="text"
-              name="username"
-              value={username}
-              onChange={(event) => setUsername(event.target.value)}
-              required
-            />
-          </FormField>
-          <FormField label="Password" name="password">
-            <TextInput
-              type="password"
-              name="password"
-              value={password}
-              onChange={(event) => setPassword(event.target.value)}
-              required
-            />
-          </FormField>
-          <Box direction="row" justify="center" margin={{ top: "medium" }}>
-            <Button type="submit" label="Login" primary fill="horizontal" />
-          </Box>
-        </Form>
-        <Text>Person ID</Text>
-        <Text>{authentication.session?.personID}</Text>
-        <Text>Session ID</Text>
-        <Text>{authentication.session?.sessionID}</Text>
-        {error && (
-          <Notification
-            toast
-            status="critical"
-            title={error.statusCode.toString()}
-            message={error.message}
-            onClose={() => setError(undefined)}
-          />
-        )}
-      </Box>
-    </AuthContext.Provider>
-  );
-};
+    return (
+        <Box align="center" pad="large">
+            <Heading level={2}>Login</Heading>
+            <Form onSubmit={handleSubmit}>
+                <FormField label="Username" name="username">
+                    <TextInput
+                        type="text"
+                        name="username"
+                        value={username}
+                        onChange={(event) => setUsername(event.target.value)}
+                        required
+                    />
+                </FormField>
+                <FormField label="Password" name="password">
+                    <TextInput
+                        type="password"
+                        name="password"
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                        required
+                    />
+                </FormField>
+                <Box direction="row" justify="center" margin={{top: "medium"}}>
+                    <Button type="submit" label="Login" primary fill="horizontal"/>
+                </Box>
+            </Form>
+            <Text>Person ID</Text>
+            <Text>{authentication.session?.personID}</Text>
+            <Text>Session ID</Text>
+            <Text>{authentication.session?.sessionID}</Text>
+            {error &&
+                <Notification
+                    toast
+                    status="critical"
+                    title={error.statusCode.toString()}
+                    message={error.message}
+                    onClose={() => setError(undefined)}
+                />
+            }
+        </Box>
+    )
+}
 
 export default LoginPage;
