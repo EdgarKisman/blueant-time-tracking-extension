@@ -1,11 +1,16 @@
 export type Credentials = {
-    readonly username: string
-    readonly password: string
+    username: string
+    password: string
 }
 
 export type BlueAntSession = {
     sessionID: string
     personID: string
+}
+
+export type AuthData = {
+    credentials: Credentials
+    session: BlueAntSession
 }
 
 export interface RequestError {
