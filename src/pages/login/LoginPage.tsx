@@ -1,40 +1,23 @@
-import React, { useState } from "react";
-import {
-  Box,
-  Button,
-  Form,
-  FormField,
-  Heading,
-  Text,
-  TextInput,
-  Notification,
-} from "grommet";
-import { login } from "../../api/base/requests/login";
-import {
-  Credentials,
-  RequestError,
-  BlueAntSession,
-  AuthData,
-} from "../../api/base/typings";
+import {useState} from "react"
+import {Box, Button, Form, FormField, Heading, Text, TextInput, Notification} from "grommet"
+import {login} from "../../api/base/requests/login"
+import {Credentials, RequestError, AuthData} from "../../api/base/typings";
 import { AuthContext } from "../../context/AuthContext";
 
 const LoginPage = () => {
-  const [username, setUsername] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [error, setError] = useState<RequestError | undefined>(undefined);
-  const [authentication, setAuthentication] = useState<AuthData>(
-    {} as AuthData
-  );
+    const [username, setUsername] = useState<string>("")
+    const [password, setPassword] = useState<string>("")
+    const [error, setError] = useState<RequestError | undefined>(undefined)
+    const [authentication, setAuthentication] = useState<AuthData>({} as AuthData)
 
-  const handleSubmit = ({ value }: { value: Credentials }) => {
-    login({ username: value.username, password: value.password })
-      .then((response) =>
-        setAuthentication({ credentials: value, session: response })
-      )
-      .catch((error: RequestError) => setError(error));
-  };
+    const handleSubmit = ({value}: { value: Credentials }) => {
+        login({username: value.username, password: value.password})
+            .then((response) => setAuthentication({ credentials: value, session: response }))
+            .catch((error: RequestError) => setError(error))
+    }
 
     return (
+        <AuthContext.Provider value={authentication}>
         <Box align="center" pad="large">
             <Heading level={2}>Login</Heading>
             <Form onSubmit={handleSubmit}>
@@ -74,7 +57,8 @@ const LoginPage = () => {
                 />
             }
         </Box>
+        </AuthContext.Provider>
     )
 }
 
-export default LoginPage;
+export default LoginPage
