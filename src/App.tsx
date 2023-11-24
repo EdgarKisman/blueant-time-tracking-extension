@@ -1,9 +1,10 @@
-import React, {PropsWithChildren, useState} from 'react';
+import React, {PropsWithChildren, useContext, useState} from 'react';
 import {Box, Button, Grommet, grommet, Header, Page, PageContent, Text,} from 'grommet';
 import {Moon, Sun} from "grommet-icons";
 import {deepMerge} from "grommet/utils"
 import LoginPage from "./pages/login/LoginPage";
 import TimeOverviewPage from "./pages/overview/TimeOverviewPage";
+import { AuthContext } from './context/AuthContext';
 
 const theme = deepMerge(grommet, {
     global: {
@@ -29,31 +30,33 @@ const AppBar = (props: PropsWithChildren) => (
 
 const App = () => {
     const [darkMode, setDarkMode] = useState(false)
-    const isAuthenticated = false
+    const authentication = useContext(AuthContext)
     return (
-        <Grommet theme={theme} full themeMode={darkMode ? "dark" : "light"}>
-            <Page>
-                <AppBar>
-                    <Text size="large">BlueAnt Time Tracker</Text>
-                    <Button
-                        icon={darkMode ? <Moon/> : <Sun/>}
-                        onClick={() => setDarkMode(!darkMode)}
-                        tip={{
-                            content: (
-                                <Box pad="small" round="small" background={darkMode ? "dark-1" : "light-3"}>
-                                    {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-                                </Box>
-                            )
-                        }}
-                    />
-                </AppBar>
-                <PageContent>
-                    {
-                        isAuthenticated ? <TimeOverviewPage/> : <LoginPage/>
-                    }
-                </PageContent>
-            </Page>
-        </Grommet>
+        <AuthContext.Provider value={authentication}>
+            <Grommet theme={theme} full themeMode={darkMode ? "dark" : "light"}>
+                <Page>
+                    <AppBar>
+                        <Text size="large">BlueAnt Time Tracker</Text>
+                        <Button
+                            icon={darkMode ? <Moon/> : <Sun/>}
+                            onClick={() => setDarkMode(!darkMode)}
+                            tip={{
+                                content: (
+                                    <Box pad="small" round="small" background={darkMode ? "dark-1" : "light-3"}>
+                                        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
+                                    </Box>
+                                )
+                            }}
+                        />
+                    </AppBar>
+                    <PageContent>
+                        {
+                            authentication.session ? <TimeOverviewPage/> : <LoginPage/>
+                        }
+                    </PageContent>
+                </Page>
+            </Grommet>
+        </AuthContext.Provider>
     );
 }
 
