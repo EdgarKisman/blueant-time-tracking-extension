@@ -19,8 +19,8 @@ export interface RequestError {
 }
 
 export interface Authentication {
-  session: AuthData | undefined
-  onLogin: (value: Credentials) => void
-  error?: RequestError | undefined
+  user?: AuthData
+  onLogin?: (value: Credentials) => void
+  error?: RequestError
   resetError?: () => void
 }

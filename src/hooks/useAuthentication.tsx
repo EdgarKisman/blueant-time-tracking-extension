@@ -1,20 +1,20 @@
 import { useState } from "react"
-import { AuthData, Authentication, Credentials, RequestError } from "../api/base/typings"
-import { login } from "../api/base/requests/login"
+import { AuthData, Authentication, Credentials, RequestError } from "../api/models"
+import { login } from "../api/base/login"
 
-const authenticationHook = (): Authentication => {
+const useAuthentication = (): Authentication => {
   const [session, setSession] = useState<AuthData | undefined>(undefined)
   const [error, setError] = useState<RequestError | undefined>(undefined)
 
   const authenticateUser = (value: Credentials) => {
     login({ username: value.username, password: value.password })
       .then((response) => setSession({ credentials: value, session: response }))
-      .catch((error: RequestError) => setError(error))
+      .catch(setError)
   }
 
   const resetError = () => setError(undefined)
 
-  return { session, onLogin: authenticateUser, error, resetError }
+  return { user: session, onLogin: authenticateUser, error, resetError }
 }
 
-export default authenticationHook
+export default useAuthentication

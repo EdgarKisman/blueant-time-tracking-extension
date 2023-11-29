@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import {
   Box,
   Button,
@@ -8,17 +8,25 @@ import {
   TextInput,
   Notification,
 } from "grommet"
-import { Credentials, RequestError } from "../../api/base/typings"
+import { Credentials, RequestError } from "../../api/models"
 import { AuthContext } from "../../context/AuthContext"
 
 const LoginPage = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false)
   const [username, setUsername] = useState<string>("")
   const [password, setPassword] = useState<string>("")
-  const { onLogin, error, resetError } = useContext(AuthContext)
+  const { user, onLogin, error, resetError } = useContext(AuthContext)
 
   const handleSubmit = ({ value }: { value: Credentials }) => {
-    onLogin(value)
+    setIsLoading(true)
+    onLogin?.(value)
   }
+
+  useEffect(() => {
+    if (user !== undefined || error !== undefined) {
+      setIsLoading(false)
+    }
+  }, [user, error])
 
   return (
     <Box align="center" pad="large">
@@ -43,7 +51,13 @@ const LoginPage = () => {
           />
         </FormField>
         <Box direction="row" justify="center" margin={{ top: "medium" }}>
-          <Button type="submit" label="Login" primary fill="horizontal" />
+          <Button
+            type="submit"
+            label="Login"
+            primary
+            fill="horizontal"
+            busy={isLoading}
+          />
         </Box>
       </Form>
       {error && (

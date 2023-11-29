@@ -1,6 +1,6 @@
 import axios from "redaxios"
-import { BlueAntSession, Credentials, RequestError } from "../typings"
-import { getHeaders } from "../../factory"
+import { BlueAntSession, Credentials, RequestError } from "../models"
+import { getHeaders } from "../factory"
 import { XMLParser } from "fast-xml-parser"
 
 const getSoapBody = (props: Credentials) => {

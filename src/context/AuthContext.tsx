@@ -1,7 +1,4 @@
 import { createContext } from "react"
-import { Authentication } from "../api/base/typings"
+import { Authentication } from "../api/models"
 
-export const AuthContext = createContext<Authentication>({
-  session: undefined,
-  onLogin: () => {},
-})
+export const AuthContext = createContext<Authentication>({})

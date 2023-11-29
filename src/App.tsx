@@ -14,7 +14,7 @@ import { deepMerge } from "grommet/utils"
 import LoginPage from "./pages/login/LoginPage"
 import TimeOverviewPage from "./pages/overview/TimeOverviewPage"
 import { AuthContext } from "./context/AuthContext"
-import authenticationHook from "./hooks/authenticationHook"
+import useAuthentication from "./hooks/useAuthentication"
 
 const theme = deepMerge(grommet, {
   global: {
@@ -40,10 +40,11 @@ const AppBar = (props: PropsWithChildren) => (
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(false)
-  const { session, onLogin, error, resetError } = authenticationHook()
+  const authentication = useAuthentication()
+
   return (
     <Grommet theme={theme} full themeMode={darkMode ? "dark" : "light"}>
-      <AuthContext.Provider value={{ session, onLogin, error, resetError }}>
+      <AuthContext.Provider value={authentication}>
         <Page>
           <AppBar>
             <Text size="large">BlueAnt Time Tracker</Text>
@@ -64,7 +65,7 @@ const App = () => {
             />
           </AppBar>
           <PageContent>
-            {session?.session ? <TimeOverviewPage /> : <LoginPage />}
+            {authentication.user?.session ? <TimeOverviewPage /> : <LoginPage />}
           </PageContent>
         </Page>
       </AuthContext.Provider>
