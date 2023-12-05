@@ -1,4 +1,5 @@
-import React, { Table, TableCell, TableHeader, TableRow, Text } from 'grommet'
+import React from 'react'
+import { Table, TableCell, TableHeader, TableRow, Text } from 'grommet'
 
 const TimeOverviewPage = (): JSX.Element => {
   const columns = ['Time', 'Test', 'Test2']
