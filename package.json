@@ -14,14 +14,14 @@
     "@types/xml2js": "0.4.14",
     "eslint-config-prettier": "9.1.0",
     "fast-xml-parser": "4.3.2",
-    "grommet": "2.34.1",
+    "grommet": "2.35.0-alpha.1",
     "grommet-icons": "4.11.0",
     "husky": "8.0.3",
     "lint-staged": "15.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "redaxios": "0.5.1",
-    "styled-components": "5.3.6"
+    "styled-components": "6.1.1"
   },
   "devDependencies": {
     "@types/node": "20.10.3",
