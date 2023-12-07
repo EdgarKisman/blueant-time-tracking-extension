@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest'
-import { Credentials } from '../models'
+import { type Credentials } from '../models'
 import { login } from './login'
 
 describe('login function', () => {
