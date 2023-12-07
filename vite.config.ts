@@ -8,5 +8,5 @@ export default defineConfig({
     proxy: {
       '/services': 'http://vspe040-test'
     }
-  },
+  }
 })
