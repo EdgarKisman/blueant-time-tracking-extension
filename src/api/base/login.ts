@@ -1,5 +1,9 @@
 import axios from 'redaxios'
-import { type BlueAntSession, type Credentials, type RequestError } from '../models'
+import {
+  type BlueAntSession,
+  type Credentials,
+  type RequestError
+} from '../models'
 import { getHeaders } from '../factory'
 import { XMLParser } from 'fast-xml-parser'
 
@@ -39,7 +43,8 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
         if (error.data !== undefined) {
           const parsed = new XMLParser().parse(error.data)
           responseMessage =
-            parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault'].faultstring
+            parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault']
+              .faultstring
         }
 
         const message: string =

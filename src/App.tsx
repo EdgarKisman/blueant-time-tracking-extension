@@ -50,7 +50,9 @@ const App = (): JSX.Element => {
             <Text size="large">BlueAnt Time Tracker</Text>
             <Button
               icon={darkMode ? <Moon /> : <Sun />}
-              onClick={() => { setDarkMode(!darkMode) }}
+              onClick={() => {
+                setDarkMode(!darkMode)
+              }}
               tip={{
                 content: (
                   <Box
@@ -65,7 +67,12 @@ const App = (): JSX.Element => {
             />
           </AppBar>
           <PageContent>
-            {authentication.user?.session !== null && authentication.user?.session !== undefined ? <TimeOverviewPage /> : <LoginPage />}
+            {authentication.user?.session !== null &&
+            authentication.user?.session !== undefined ? (
+              <TimeOverviewPage />
+            ) : (
+              <LoginPage />
+            )}
           </PageContent>
         </Page>
       </AuthContext.Provider>

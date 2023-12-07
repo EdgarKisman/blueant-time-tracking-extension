@@ -37,7 +37,9 @@ const LoginPage = (): JSX.Element => {
             type="text"
             name="username"
             value={username}
-            onChange={(event) => { setUsername(event.target.value) }}
+            onChange={(event) => {
+              setUsername(event.target.value)
+            }}
             required
           />
         </FormField>
@@ -46,7 +48,9 @@ const LoginPage = (): JSX.Element => {
             type="password"
             name="password"
             value={password}
-            onChange={(event) => { setPassword(event.target.value) }}
+            onChange={(event) => {
+              setPassword(event.target.value)
+            }}
             required
           />
         </FormField>
