@@ -13,10 +13,10 @@ dependencies:
     version: 4.3.2
   grommet:
     specifier: 2.34.1
-    version: 2.34.1(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.6)
+    version: 2.34.1(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
   grommet-icons:
     specifier: 4.11.0
-    version: 4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.6)
+    version: 4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
   lint-staged:
     specifier: 15.1.0
     version: 15.1.0
@@ -30,8 +30,8 @@ dependencies:
     specifier: 0.5.1
     version: 0.5.1
   styled-components:
-    specifier: 5.3.6
-    version: 5.3.6(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
+    specifier: 5.3.11
+    version: 5.3.11(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
 
 devDependencies:
   '@types/node':
@@ -76,8 +76,8 @@ packages:
       '@babel/highlight': 7.23.4
       chalk: 2.4.2
 
-  /@babel/compat-data@7.23.3:
-    resolution: {integrity: sha512-BmR4bWbDIoFJmJ9z2cZ8Gmm2MXgEDgjdWgpKmKWUt54UGFJdlj31ECtbaDvCG/qVdG3AQ1SfpZEs01lUFbzLOQ==}
+  /@babel/compat-data@7.23.5:
+    resolution: {integrity: sha512-uU27kfDRlhfKl+w1U6vp16IuvSLtjAxdArVXPa9BvLkrr7CYIsxH5adpHObeAGY/41+syctUWOZ140a2Rvkgjw==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -125,8 +125,8 @@ packages:
     resolution: {integrity: sha512-y6EEzULok0Qvz8yyLkCvVX+02ic+By2UdOhylwUOvOn9dvYc9mKICJuuU1n1XBI02YWsNsnrY1kc6DVbjcXbtw==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/compat-data': 7.23.3
-      '@babel/helper-validator-option': 7.22.15
+      '@babel/compat-data': 7.23.5
+      '@babel/helper-validator-option': 7.23.5
       browserslist: 4.22.1
       lru-cache: 5.1.1
       semver: 6.3.1
@@ -201,8 +201,8 @@ packages:
     resolution: {integrity: sha512-Y4OZ+ytlatR8AI+8KZfKuL5urKp7qey08ha31L8b3BwewJAoJamTzyvxPR/5D+KkdJCGPq/+8TukHBlY10FX9A==}
     engines: {node: '>=6.9.0'}
 
-  /@babel/helper-validator-option@7.22.15:
-    resolution: {integrity: sha512-bMn7RmyFjY/mdECUbgn9eoSY4vqvacUnS9i9vGAGttgFWesO6B4CYWA7XlpbWgBt71iv/hfbPlynohStqnu5hA==}
+  /@babel/helper-validator-option@7.23.5:
+    resolution: {integrity: sha512-85ttAOMLsr53VgXkTbkx8oA6YTfT4q7/HzXSLEYmjcSTJPMPQtvq1BD79Byep5xMUYbGRzEpDsjUf3dyp54IKw==}
     engines: {node: '>=6.9.0'}
     dev: false
 
@@ -904,7 +904,8 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /babel-plugin-styled-components@2.1.4(@babel/core@7.23.3)(styled-components@5.3.6):
+  /babel-plugin-styled-components@2.1.4(@babel/core@7.23.3)(styled-components@5.3.11):
+
     resolution: {integrity: sha512-Xgp9g+A/cG47sUyRwwYxGM4bR/jDRg5N6it/8+HxCnbT5XNKSKDT9xm4oag/osgqjC2It/vH0yXsomOG6k558g==}
     peerDependencies:
       styled-components: '>= 2'
@@ -914,7 +915,7 @@ packages:
       '@babel/plugin-syntax-jsx': 7.23.3(@babel/core@7.23.3)
       lodash: 4.17.21
       picomatch: 2.3.1
-      styled-components: 5.3.6(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
+      styled-components: 5.3.11(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
     transitivePeerDependencies:
       - '@babel/core'
     dev: false
@@ -1373,7 +1374,8 @@ packages:
     resolution: {integrity: sha512-xYfnw62CKG8nLkZBfWbhWwDw02CHty86jfPcc2cr3ZfeuK9ysoVPPEUxf21bAD/rWAgk52SuBrLJlefNy8mvFg==}
     dev: true
 
-  /grommet-icons@4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.6):
+  /grommet-icons@4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11):
+
     resolution: {integrity: sha512-ArXf2XyXmpk5JsQ8NudzNz3mbWv+TeZkPiyog2s9yoNAWTlIr3vzNjr97uon/Xm4Uiq2kiHkvO4i2fG1u6EaDg==}
     peerDependencies:
       react: ^16.6.0 || ^17.0.0 || ^18.0.0
@@ -1382,10 +1384,10 @@ packages:
     dependencies:
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      styled-components: 5.3.6(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
+      styled-components: 5.3.11(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
     dev: false
 
-  /grommet@2.34.1(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.6):
+  /grommet@2.34.1(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11):
     resolution: {integrity: sha512-zZXwURaGoCgprsPug2kDXp5raTBbyajHFpSXby92jfjHlr1DFa8Wa9NR4SuaLDP+LIaKWD/dMtLYw3GSFfs5RQ==}
     engines: {node: '>= 16'}
     peerDependencies:
@@ -1393,13 +1395,13 @@ packages:
       react-dom: ^16.6.1 || ^17.0.0 || ^18.0.0
       styled-components: ^5.1.0
     dependencies:
-      grommet-icons: 4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.6)
+      grommet-icons: 4.11.0(react-dom@18.2.0)(react@18.2.0)(styled-components@5.3.11)
       hoist-non-react-statics: 3.3.2
       markdown-to-jsx: 7.3.2(react@18.2.0)
       prop-types: 15.8.1
       react: 18.2.0
       react-dom: 18.2.0(react@18.2.0)
-      styled-components: 5.3.6(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
+      styled-components: 5.3.11(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0)
     dev: false
 
   /hard-rejection@2.1.0:
@@ -2219,10 +2221,9 @@ packages:
     resolution: {integrity: sha512-Dj1Okke1C3uKKwQcetra4jSuk0DqbzbYtXipzFlFMZtowbF1x7BKJwB9AayVMyFARvU8EDrZdcax4At/452cAg==}
     dev: true
 
-  /styled-components@5.3.6(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0):
-    resolution: {integrity: sha512-hGTZquGAaTqhGWldX7hhfzjnIYBZ0IXQXkCYdvF1Sq3DsUaLx6+NTHC5Jj1ooM2F68sBiVz3lvhfwQs/S3l6qg==}
+  /styled-components@5.3.11(@babel/core@7.23.3)(react-dom@18.2.0)(react-is@16.13.1)(react@18.2.0):
+    resolution: {integrity: sha512-uuzIIfnVkagcVHv9nE0VPlHPSCmXIUGKfJ42LNjxCCTDTL5sgnJ8Z7GZBq0EnLYGln77tPpEpExt2+qa+cZqSw==}
     engines: {node: '>=10'}
-    requiresBuild: true
     peerDependencies:
       react: '>= 16.8.0'
       react-dom: '>= 16.8.0'
@@ -2233,7 +2234,7 @@ packages:
       '@emotion/is-prop-valid': 1.2.1
       '@emotion/stylis': 0.8.5
       '@emotion/unitless': 0.7.5
-      babel-plugin-styled-components: 2.1.4(@babel/core@7.23.3)(styled-components@5.3.6)
+      babel-plugin-styled-components: 2.1.4(@babel/core@7.23.3)(styled-components@5.3.11)
       css-to-react-native: 3.2.0
       hoist-non-react-statics: 3.3.2
       react: 18.2.0
