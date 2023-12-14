@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
 
-const rootElement = document.getElementById('root');
+const rootElement = document.getElementById('root')
 if (rootElement !== null && rootElement !== undefined) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
@@ -12,5 +12,5 @@ if (rootElement !== null && rootElement !== undefined) {
     </React.StrictMode>
   )
 } else {
-  console.error("Root element not found");
+  console.error('Root element not found')
 }
