@@ -11,8 +11,8 @@ import {
 } from 'grommet'
 import { Moon, Sun } from 'grommet-icons'
 import { deepMerge } from 'grommet/utils'
-import LoginPage from './pages/login/LoginPage'
-import TimeOverviewPage from './pages/overview/TimeOverviewPage'
+import LoginPage from './pages/Login/LoginPage'
+import TimeOverviewPage from './pages/TimeOverview/TimeOverviewPage'
 import { AuthContext } from './context/AuthContext'
 import useAuthentication from './hooks/useAuthentication'
 
@@ -49,8 +49,14 @@ const App = (): JSX.Element => {
           <AppBar>
             <Text size="large">BlueAnt Time Tracker</Text>
             <Button
-              icon={darkMode ? <Moon data-testid="moon" /> : <Sun data-tesid="sun" />}
-              data-testid = 'toggle-theme-btn'
+              icon={
+                darkMode ? (
+                  <Moon data-testid="moon" />
+                ) : (
+                  <Sun data-tesid="sun" />
+                )
+              }
+              data-testid="toggle-theme-btn"
               onClick={() => {
                 setDarkMode(!darkMode)
               }}

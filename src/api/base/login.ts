@@ -29,29 +29,32 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
         { headers: getHeaders('Login') }
       )
       .then((response) => {
-        const parsed = new XMLParser().parse(response.data)
+        if (typeof response.data === 'string' || response.data instanceof Buffer) {
+          const parsed = new XMLParser().parse(response.data)
         const session =
           parsed['soapenv:Envelope']['soapenv:Body']['ns2:session']
         resolve({
           personID: session['ns2:personID'],
           sessionID: session['ns2:sessionID']
-        })
+        })}
       })
       .catch((error) => {
         let responseMessage: string | undefined
-
+      
         if (error.data !== undefined) {
-          const parsed = new XMLParser().parse(error.data)
+          const parsed = new XMLParser().parse(error.data as string)
           responseMessage =
             parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault']
               .faultstring
         }
-
+      
         const message: string =
           responseMessage ?? 'Login failed: An unexpected error occurred'
         const statusCode: number = error.status ?? 500
         const requestError: RequestError = { statusCode, message }
         reject(requestError)
       })
+      
+      
   })
 }
