@@ -15,6 +15,7 @@ import LoginPage from './pages/Login/LoginPage'
 import TimeOverviewPage from './pages/TimeOverview/TimeOverviewPage'
 import { AuthContext } from './context/AuthContext'
 import useAuthentication from './hooks/useAuthentication'
+import WorkTimeCalendar from './component/WorkTimeCalendar'
 
 const theme = deepMerge(grommet, {
   global: {
@@ -48,30 +49,38 @@ const App = (): JSX.Element => {
         <Page>
           <AppBar>
             <Text size="large">BlueAnt Time Tracker</Text>
-            <Button
-              icon={
-                darkMode ? (
-                  <Moon data-testid="moon" />
-                ) : (
-                  <Sun data-tesid="sun" />
-                )
-              }
-              data-testid="toggle-theme-btn"
-              onClick={() => {
-                setDarkMode(!darkMode)
-              }}
-              tip={{
-                content: (
-                  <Box
-                    pad="small"
-                    round="small"
-                    background={darkMode ? 'dark-1' : 'light-3'}
-                  >
-                    {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
-                  </Box>
-                )
-              }}
-            />
+            <Box direction="row-responsive">
+              {authentication.user?.session !== null &&
+                authentication.user?.session !== undefined && (
+                  <WorkTimeCalendar />
+                )}
+              <Button
+                icon={
+                  darkMode ? (
+                    <Moon data-testid="moon" />
+                  ) : (
+                    <Sun data-tesid="sun" />
+                  )
+                }
+                data-testid="toggle-theme-btn"
+                onClick={() => {
+                  setDarkMode(!darkMode)
+                }}
+                tip={{
+                  content: (
+                    <Box
+                      pad="small"
+                      round="small"
+                      background={darkMode ? 'dark-1' : 'light-3'}
+                    >
+                      {darkMode
+                        ? 'Switch to Light Mode'
+                        : 'Switch to Dark Mode'}
+                    </Box>
+                  )
+                }}
+              />
+            </Box>
           </AppBar>
           <PageContent>
             {authentication.user?.session !== null &&

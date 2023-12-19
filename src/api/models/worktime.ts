@@ -17,8 +17,8 @@ export interface EditWorktimeRequestParameter {
   sessionID: string
   workTimeID?: string
   date: string
-  from?: string
-  to?: string
+  from: string
+  to: string
   breakShare?: number
   duration?: number
   ticketID?: string
@@ -39,7 +39,7 @@ export interface WorkTime extends EditWorktimeRequestParameter {
   personName: string
   ticketName?: string
   projectName?: string
-  taskName?: string
+  taskName: string
   activityName?: string
   reasonNotAccountableName?: string
   iccName?: string
