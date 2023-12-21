@@ -11,7 +11,7 @@ import {
 } from 'grommet'
 import { Moon, Sun } from 'grommet-icons'
 import { deepMerge } from 'grommet/utils'
-import LoginPage from './pages/Login/LoginPage'
+import LoginPage from './pages/login/LoginPage'
 import TimeOverviewPage from './pages/overview/TimeOverviewPage'
 import { AuthContext } from './context/AuthContext'
 import useAuthentication from './hooks/useAuthentication'
