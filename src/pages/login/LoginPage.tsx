@@ -11,7 +11,7 @@ import {
 import { type Credentials } from '../../api/models'
 import { AuthContext } from '../../context/AuthContext'
 import isNil from 'lodash/isNil'
-import { Blank } from '../../util/constants'
+import { Blank } from '../../utils/constants'
 
 const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
