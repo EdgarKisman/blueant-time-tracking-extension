@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from 'react'
 import {
   Box,
   Button,
@@ -6,18 +6,20 @@ import {
   FormField,
   Heading,
   TextInput,
-  Notification,
-} from "grommet"
-import { Credentials, RequestError } from "../../api/models"
-import { AuthContext } from "../../context/AuthContext"
+  Notification
+} from 'grommet'
+import { type Credentials } from '../../api/models'
+import { AuthContext } from '../../context/AuthContext'
+import isNil from 'lodash/isNil'
+import { Blank } from '../../utils/constants'
 
-const LoginPage = () => {
+const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>("")
-  const [password, setPassword] = useState<string>("")
+  const [username, setUsername] = useState<string>(Blank)
+  const [password, setPassword] = useState<string>(Blank)
   const { user, onLogin, error, resetError } = useContext(AuthContext)
 
-  const handleSubmit = ({ value }: { value: Credentials }) => {
+  const handleSubmit = ({ value }: { value: Credentials }): void => {
     setIsLoading(true)
     onLogin?.(value)
   }
@@ -37,7 +39,7 @@ const LoginPage = () => {
             type="text"
             name="username"
             value={username}
-            onChange={(event) => setUsername(event.target.value)}
+            onChange={(event) => { setUsername(event.target.value) }}
             required
           />
         </FormField>
@@ -46,11 +48,11 @@ const LoginPage = () => {
             type="password"
             name="password"
             value={password}
-            onChange={(event) => setPassword(event.target.value)}
+            onChange={(event) => { setPassword(event.target.value) }}
             required
           />
         </FormField>
-        <Box direction="row" justify="center" margin={{ top: "medium" }}>
+        <Box direction="row" justify="center" margin={{ top: 'medium' }}>
           <Button
             type="submit"
             label="Login"
@@ -60,7 +62,7 @@ const LoginPage = () => {
           />
         </Box>
       </Form>
-      {error && (
+      {!isNil(error) && (
         <Notification
           toast
           status="critical"

@@ -1,14 +1,14 @@
-export type Credentials = {
+export interface Credentials {
   username: string
   password: string
 }
 
-export type BlueAntSession = {
+export interface BlueAntSession {
   sessionID: string
   personID: string
 }
 
-export type AuthData = {
+export interface AuthData {
   credentials: Credentials
   session: BlueAntSession
 }
