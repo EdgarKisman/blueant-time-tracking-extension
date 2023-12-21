@@ -15,6 +15,7 @@ import LoginPage from './pages/login/LoginPage'
 import TimeOverviewPage from './pages/overview/TimeOverviewPage'
 import { AuthContext } from './context/AuthContext'
 import useAuthentication from './hooks/useAuthentication'
+import isNil from 'lodash/isNil'
 
 const theme = deepMerge(grommet, {
   global: {
@@ -67,8 +68,7 @@ const App = (): JSX.Element => {
             />
           </AppBar>
           <PageContent>
-            {authentication.user?.session !== null &&
-            authentication.user?.session !== undefined ? (
+            {!isNil(authentication.user?.session) ? (
               <TimeOverviewPage />
             ) : (
               <LoginPage />

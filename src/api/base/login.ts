@@ -6,6 +6,7 @@ import {
 } from '../models'
 import { getHeaders } from '../factory'
 import { XMLParser } from 'fast-xml-parser'
+import isNil from 'lodash/isNil'
 
 const getSoapBody = (props: Credentials): string => {
   return `<?xml version="1.0" encoding="UTF-8"?>
@@ -28,7 +29,7 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
         getSoapBody(props),
         { headers: getHeaders('Login') }
       )
-      .then((response) => {
+      .then((response: { data: string | Buffer }) => {
         const parsed = new XMLParser().parse(response.data)
         const session =
           parsed['soapenv:Envelope']['soapenv:Body']['ns2:session']
@@ -37,10 +38,10 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
           sessionID: session['ns2:sessionID']
         })
       })
-      .catch((error) => {
+      .catch((error: { data: string | Buffer; status: number }) => {
         let responseMessage: string | undefined
 
-        if (error.data !== undefined) {
+        if (!isNil(error.data)) {
           const parsed = new XMLParser().parse(error.data)
           responseMessage =
             parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault']
