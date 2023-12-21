@@ -10,11 +10,13 @@ import {
 } from 'grommet'
 import { type Credentials } from '../../api/models'
 import { AuthContext } from '../../context/AuthContext'
+import isNil from 'lodash/isNil'
+import { blank } from '../../util/constants'
 
 const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [username, setUsername] = useState<string>(blank)
+  const [password, setPassword] = useState<string>(blank)
   const { user, onLogin, error, resetError } = useContext(AuthContext)
 
   const handleSubmit = ({ value }: { value: Credentials }): void => {
@@ -60,7 +62,7 @@ const LoginPage = (): JSX.Element => {
           />
         </Box>
       </Form>
-      {error !== null && error !== undefined && (
+      {!isNil(error) && (
         <Notification
           toast
           status="critical"
