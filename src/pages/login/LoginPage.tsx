@@ -11,12 +11,12 @@ import {
 import { type Credentials } from '../../api/models'
 import { AuthContext } from '../../context/AuthContext'
 import isNil from 'lodash/isNil'
-import { blank } from '../../util/constants'
+import { Blank } from '../../util/constants'
 
 const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>(blank)
-  const [password, setPassword] = useState<string>(blank)
+  const [username, setUsername] = useState<string>(Blank)
+  const [password, setPassword] = useState<string>(Blank)
   const { user, onLogin, error, resetError } = useContext(AuthContext)
 
   const handleSubmit = ({ value }: { value: Credentials }): void => {

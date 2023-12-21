@@ -1,1 +1,1 @@
-export const blank = ""
+export const Blank = ""
