@@ -12,5 +12,5 @@ if (rootElement !== null && rootElement !== undefined) {
     </React.StrictMode>
   )
 } else {
-  console.error("Root element not found")
+  console.error('Root element not found')
 }
