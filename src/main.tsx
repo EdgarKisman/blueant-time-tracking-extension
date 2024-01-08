@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
-import { isNil } from 'lodash'
+import isNil from 'lodash/isNil'
 
 const rootElement = document.getElementById('root')
 
