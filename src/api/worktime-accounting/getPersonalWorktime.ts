@@ -10,6 +10,7 @@ import {
   type EditWorktimeRequestParameter,
   type WorkTime,
 } from '../models/worktime'
+import isNil from 'lodash/isNil'
 
 function mapToAbstractCustomField(item: any): AbstractCustomField {
   return {
@@ -119,7 +120,7 @@ export const getPersonalWorktime = async (): Promise<WorkTime[]> => {
       .catch(error => {
         let responseMessage: string | undefined
 
-        if (error.data !== undefined) {
+        if (!isNil(error.data)) {
           const parsed = new XMLParser().parse(error.data as string)
           responseMessage =
             parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault']
