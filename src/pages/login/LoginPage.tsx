@@ -25,7 +25,7 @@ const LoginPage = (): JSX.Element => {
   }
 
   useEffect(() => {
-    if (user !== undefined || error !== undefined) {
+    if (!isNil(user)) {
       setIsLoading(false)
     }
   }, [user, error])
