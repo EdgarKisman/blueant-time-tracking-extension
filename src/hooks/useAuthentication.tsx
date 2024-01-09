@@ -3,7 +3,7 @@ import {
   type AuthData,
   type Authentication,
   type Credentials,
-  type RequestError
+  type RequestError,
 } from '../api/models'
 import { login } from '../api/base/login'
 
@@ -13,7 +13,7 @@ const useAuthentication = (): Authentication => {
 
   const authenticateUser = (value: Credentials): void => {
     login({ username: value.username, password: value.password })
-      .then((response) => {
+      .then(response => {
         setSession({ credentials: value, session: response })
       })
       .catch(setError)

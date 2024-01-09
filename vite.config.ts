@@ -8,8 +8,8 @@ export default ({ mode }: { mode: string }): UserConfig => {
     plugins: [react()],
     server: {
       proxy: {
-        '/services': process.env.VITE_DOMAIN
-      }
-    }
+        '/services': process.env.VITE_DOMAIN,
+      },
+    },
   })
 }

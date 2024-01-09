@@ -7,7 +7,7 @@ import {
   Header,
   Page,
   PageContent,
-  Text
+  Text,
 } from 'grommet'
 import { Moon, Sun } from 'grommet-icons'
 import { deepMerge } from 'grommet/utils'
@@ -20,14 +20,14 @@ import isNil from 'lodash/isNil'
 const theme = deepMerge(grommet, {
   global: {
     colors: {
-      brand: 'rgba(0,100,163,0.75)'
+      brand: 'rgba(0,100,163,0.75)',
     },
     font: {
       family: 'Roboto',
       size: '18px',
-      height: '20px'
-    }
-  }
+      height: '20px',
+    },
+  },
 })
 
 const AppBar = (props: PropsWithChildren): JSX.Element => (
@@ -63,7 +63,7 @@ const App = (): JSX.Element => {
                   >
                     {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                   </Box>
-                )
+                ),
               }}
             />
           </AppBar>

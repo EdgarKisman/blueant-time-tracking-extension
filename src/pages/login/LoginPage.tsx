@@ -6,15 +6,17 @@ import {
   FormField,
   Heading,
   TextInput,
-  Notification
+  Notification,
 } from 'grommet'
 import { type Credentials } from '../../api/models'
 import { AuthContext } from '../../context/AuthContext'
+import { Blank } from '../../utils/constants'
+import isNil from 'lodash/isNil'
 
 const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>('')
-  const [password, setPassword] = useState<string>('')
+  const [username, setUsername] = useState<string>(Blank)
+  const [password, setPassword] = useState<string>(Blank)
   const { user, onLogin, error, resetError } = useContext(AuthContext)
 
   const handleSubmit = ({ value }: { value: Credentials }): void => {
@@ -37,7 +39,7 @@ const LoginPage = (): JSX.Element => {
             type="text"
             name="username"
             value={username}
-            onChange={(event) => {
+            onChange={event => {
               setUsername(event.target.value)
             }}
             required
@@ -48,7 +50,7 @@ const LoginPage = (): JSX.Element => {
             type="password"
             name="password"
             value={password}
-            onChange={(event) => {
+            onChange={event => {
               setPassword(event.target.value)
             }}
             required
@@ -64,7 +66,7 @@ const LoginPage = (): JSX.Element => {
           />
         </Box>
       </Form>
-      {error !== null && error !== undefined && (
+      {!isNil(error) && (
         <Notification
           toast
           status="critical"
