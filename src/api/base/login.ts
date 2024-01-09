@@ -1,5 +1,9 @@
 import axios from 'redaxios'
-import { type BlueAntSession, type Credentials, type RequestError } from '../models'
+import {
+  type BlueAntSession,
+  type Credentials,
+  type RequestError,
+} from '../models'
 import { getHeaders } from '../factory'
 import { XMLParser } from 'fast-xml-parser'
 import isNil from 'lodash/isNil'
@@ -25,22 +29,23 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
         getSoapBody(props),
         { headers: getHeaders('Login') }
       )
-      .then((response) => {
+      .then((response: { data: string | Buffer }) => {
         const parsed = new XMLParser().parse(response.data)
         const session =
           parsed['soapenv:Envelope']['soapenv:Body']['ns2:session']
         resolve({
           personID: session['ns2:personID'],
-          sessionID: session['ns2:sessionID']
+          sessionID: session['ns2:sessionID'],
         })
       })
-      .catch((error) => {
+      .catch((error: { data: string | Buffer; status: number }) => {
         let responseMessage: string | undefined
 
         if (!isNil(error.data)) {
           const parsed = new XMLParser().parse(error.data)
           responseMessage =
-            parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault'].faultstring
+            parsed['soapenv:Envelope']['soapenv:Body']['soapenv:Fault']
+              .faultstring
         }
 
         const message: string =

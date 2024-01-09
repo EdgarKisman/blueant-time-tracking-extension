@@ -6,12 +6,12 @@ import {
   FormField,
   Heading,
   TextInput,
-  Notification
+  Notification,
 } from 'grommet'
 import { type Credentials } from '../../api/models'
 import { AuthContext } from '../../context/AuthContext'
-import isNil from 'lodash/isNil'
 import { Blank } from '../../utils/constants'
+import isNil from 'lodash/isNil'
 
 const LoginPage = (): JSX.Element => {
   const [isLoading, setIsLoading] = useState<boolean>(false)
@@ -39,7 +39,9 @@ const LoginPage = (): JSX.Element => {
             type="text"
             name="username"
             value={username}
-            onChange={(event) => { setUsername(event.target.value) }}
+            onChange={event => {
+              setUsername(event.target.value)
+            }}
             required
           />
         </FormField>
@@ -48,7 +50,9 @@ const LoginPage = (): JSX.Element => {
             type="password"
             name="password"
             value={password}
-            onChange={(event) => { setPassword(event.target.value) }}
+            onChange={event => {
+              setPassword(event.target.value)
+            }}
             required
           />
         </FormField>

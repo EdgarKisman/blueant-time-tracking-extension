@@ -7,14 +7,15 @@
   "scripts": {
     "dev": "vite --host",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "commit": "pnpm exec prettier . --write && pnpm eslint \"{**/*.ts,**/*.tsx}\""
   },
   "dependencies": {
     "@types/xml2js": "0.4.14",
+    "eslint-config-prettier": "9.1.0",
     "fast-xml-parser": "4.3.2",
     "grommet": "2.35.0-alpha.1",
     "grommet-icons": "4.12.0",
-    "lint-staged": "15.2.0",
     "lodash": "4.17.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -29,11 +30,14 @@
     "@typescript-eslint/eslint-plugin": "6.15.0",
     "@vitejs/plugin-react-swc": "3.5.0",
     "eslint": "8.56.0",
-    "eslint-config-standard-with-typescript": "^43.0.0",
+    "eslint-config-standard-with-typescript": "43.0.0",
     "eslint-plugin-import": "2.29.1",
     "eslint-plugin-n": "16.5.0",
     "eslint-plugin-promise": "6.1.1",
     "eslint-plugin-react": "7.33.2",
+    "husky": "8.0.3",
+    "lint-staged": "15.2.0",
+    "prettier": "3.1.0",
     "stylelint": "16.0.2",
     "stylelint-config-standard": "35.0.0",
     "typescript": "5.3.3",
