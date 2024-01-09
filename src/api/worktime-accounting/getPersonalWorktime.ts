@@ -8,7 +8,7 @@ import {
   type AbstractCustomField,
   type CustomFieldList,
   type EditWorktimeRequestParameter,
-  type WorkTime
+  type WorkTime,
 } from '../models/worktime'
 
 function mapToAbstractCustomField(item: any): AbstractCustomField {
@@ -20,13 +20,13 @@ function mapToAbstractCustomField(item: any): AbstractCustomField {
     active: item.active,
     reportId: item.reportId,
     validatorList: item.validatorList,
-    stringValue: item.stringValue
+    stringValue: item.stringValue,
   }
 }
 
 function mapToCustomFieldList(item: any): CustomFieldList {
   return {
-    abstractCustomField: mapToAbstractCustomField(item.AbstractCustomField)
+    abstractCustomField: mapToAbstractCustomField(item.AbstractCustomField),
   }
 }
 
@@ -49,12 +49,12 @@ function mapToEditWorktimeRequestParameter(
     billable: item['ns7:billable'],
     reasonNotAccountableID: item['ns7:reasonNotAccountableID'],
     iccID: item['ns7:iccID'],
-    customFieldList: mapToCustomFieldList(item['ns7:customFieldList'])
+    customFieldList: mapToCustomFieldList(item['ns7:customFieldList']),
   }
 }
 
 function responseMapper(array: any[]): WorkTime[] {
-  return array.map((item) => ({
+  return array.map(item => ({
     ...mapToEditWorktimeRequestParameter(item),
     state: item['ns7:state'],
     personID: item['ns7:personID'],
@@ -66,7 +66,7 @@ function responseMapper(array: any[]): WorkTime[] {
     activityName: item['ns7:activityName'],
     reasonNotAccountableName: item['ns7:reasonNotAccountableName'],
     iccName: item['ns7:iccName'],
-    lastChangedDate: item['ns7:lastChangedDate']
+    lastChangedDate: item['ns7:lastChangedDate'],
   }))
 }
 
@@ -103,7 +103,7 @@ export const getPersonalWorktime = async (): Promise<WorkTime[]> => {
         getSoapBody(),
         { headers: getHeaders('Login') }
       )
-      .then((response) => {
+      .then(response => {
         if (
           typeof response.data === 'string' ||
           response.data instanceof Buffer
@@ -116,7 +116,7 @@ export const getPersonalWorktime = async (): Promise<WorkTime[]> => {
           resolve(responseMapper(workTimeArray))
         }
       })
-      .catch((error) => {
+      .catch(error => {
         let responseMessage: string | undefined
 
         if (error.data !== undefined) {

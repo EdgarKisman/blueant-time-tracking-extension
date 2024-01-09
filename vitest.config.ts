@@ -5,8 +5,8 @@ export default defineConfig({
   test: {
     coverage: {
       provider: 'istanbul',
-      reporter: ['html', 'text']
+      reporter: ['html', 'text'],
     },
-    environment: 'jsdom'
-  }
+    environment: 'jsdom',
+  },
 })

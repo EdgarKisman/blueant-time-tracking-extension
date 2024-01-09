@@ -7,26 +7,27 @@ import {
   Header,
   Page,
   PageContent,
-  Text
+  Text,
 } from 'grommet'
 import { Moon, Sun } from 'grommet-icons'
 import { deepMerge } from 'grommet/utils'
-import LoginPage from './pages/Login/LoginPage'
-import TimeOverviewPage from './pages/TimeOverview/TimeOverviewPage'
+import LoginPage from './pages/login/LoginPage'
+import TimeOverviewPage from './pages/overview/TimeOverviewPage'
 import { AuthContext } from './context/AuthContext'
 import useAuthentication from './hooks/useAuthentication'
+import isNil from 'lodash/isNil'
 
 const theme = deepMerge(grommet, {
   global: {
     colors: {
-      brand: 'rgba(0,100,163,0.75)'
+      brand: 'rgba(0,100,163,0.75)',
     },
     font: {
       family: 'Roboto',
       size: '18px',
-      height: '20px'
-    }
-  }
+      height: '20px',
+    },
+  },
 })
 
 const AppBar = (props: PropsWithChildren): JSX.Element => (
@@ -69,13 +70,12 @@ const App = (): JSX.Element => {
                   >
                     {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
                   </Box>
-                )
+                ),
               }}
             />
           </AppBar>
           <PageContent>
-            {authentication.user?.session !== null &&
-            authentication.user?.session !== undefined ? (
+            {!isNil(authentication.user?.session) ? (
               <TimeOverviewPage />
             ) : (
               <LoginPage />

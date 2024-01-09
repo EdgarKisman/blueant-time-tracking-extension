@@ -5,7 +5,7 @@ import {
   TableCell,
   TableHeader,
   TableRow,
-  Text
+  Text,
 } from 'grommet'
 import { getPersonalWorktime } from '../../api/worktime-accounting/getPersonalWorktime'
 
@@ -14,10 +14,10 @@ const TimeOverviewPage = (): JSX.Element => {
 
   useEffect(() => {
     getPersonalWorktime()
-      .then((response) => {
-        setDates(response.map((r) => r.date))
+      .then(response => {
+        setDates(response.map(r => r.date))
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error)
       })
   }, [])

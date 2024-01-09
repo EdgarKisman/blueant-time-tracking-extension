@@ -1,11 +1,12 @@
-/* istanbul ignore file @preserve */
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import isNil from 'lodash/isNil'
 
 const rootElement = document.getElementById('root')
-if (rootElement !== null && rootElement !== undefined) {
+
+if (!isNil(rootElement)) {
   ReactDOM.createRoot(rootElement).render(
     <React.StrictMode>
       <App />

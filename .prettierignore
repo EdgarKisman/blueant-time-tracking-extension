@@ -2,3 +2,10 @@
 /build
 /coverage
 /dist
+package-lock.json
+node_modules/
+.vscode/
+.idea/
+*.min.js
+*.min.css
+package-lock.json
