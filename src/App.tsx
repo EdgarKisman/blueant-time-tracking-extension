@@ -52,9 +52,9 @@ const App = (): JSX.Element => {
             <Button
               icon={
                 darkMode ? (
-                  <Moon data-testid="moon" />
+                  <Moon />
                 ) : (
-                  <Sun data-tesid="sun" />
+                  <Sun />
                 )
               }
               data-testid="toggle-theme-btn"
