@@ -11,10 +11,10 @@
     "commit": "pnpm coverage && pnpm format && pnpm lint",
     "test": "pnpx vitest run",
     "coverage": "pnpx vitest run --coverage",
-    "eslinter": "pnpm eslint --fix \"{**/*.ts,**/*.tsx}\"",
+    "ts-lint": "pnpm eslint \"{**/*.ts,**/*.tsx}\"",
     "format": "pnpm exec prettier . --write",
-    "lint": "pnpm eslinter && pnpm stylelinter",
-    "stylelinter": "pnpx stylelint \"**/*.css\""
+    "lint": "pnpm ts-lint && pnpm css-lint",
+    "css-lint": "pnpx stylelint \"**/*.css\""
   },
   "dependencies": {
     "@types/xml2js": "0.4.14",
