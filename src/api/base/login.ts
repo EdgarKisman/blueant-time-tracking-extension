@@ -29,14 +29,19 @@ export const login = async (props: Credentials): Promise<BlueAntSession> => {
         getSoapBody(props),
         { headers: getHeaders('Login') }
       )
-      .then((response: { data: string | Buffer }) => {
-        const parsed = new XMLParser().parse(response.data)
-        const session =
-          parsed['soapenv:Envelope']['soapenv:Body']['ns2:session']
-        resolve({
-          personID: session['ns2:personID'],
-          sessionID: session['ns2:sessionID'],
-        })
+      .then(response => {
+        if (
+          typeof response.data === 'string' ||
+          response.data instanceof Buffer
+        ) {
+          const parsed = new XMLParser().parse(response.data)
+          const session =
+            parsed['soapenv:Envelope']['soapenv:Body']['ns2:session']
+          resolve({
+            personID: session['ns2:personID'],
+            sessionID: session['ns2:sessionID'],
+          })
+        }
       })
       .catch((error: { data: string | Buffer; status: number }) => {
         let responseMessage: string | undefined

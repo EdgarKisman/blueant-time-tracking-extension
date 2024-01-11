@@ -51,6 +51,7 @@ const App = (): JSX.Element => {
             <Text size="large">BlueAnt Time Tracker</Text>
             <Button
               icon={darkMode ? <Moon /> : <Sun />}
+              data-testid="toggle-theme-btn"
               onClick={() => {
                 setDarkMode(!darkMode)
               }}
