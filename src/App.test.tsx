@@ -4,7 +4,7 @@ import App from './App'
 
 describe('Testing App Page', () => {
   it('should show title', () => {
-    const {getByText} = render(<App />)
+    const { getByText } = render(<App />)
     expect(getByText('BlueAnt Time Tracker')).toBeDefined()
   })
 })
